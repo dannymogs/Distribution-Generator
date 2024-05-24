@@ -7,38 +7,56 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Distribution Generator</h1>
-        <div class="controls">
-            <label for="title">Title:</label>
-            <input type="text" id="title">
-            <label for="dist-type">Distribution Type:</label>
-            <select id="dist-type">
-                <option value="Triangular">Triangular</option>
-                <option value="Gaussian">Gaussian</option>
-            </select>
-            <div id="triangular-params">
-                <label for="a">min:</label>
-                <input type="text" id="a">
-                <label for="b">mode:</label>
-                <input type="text" id="b">
-                <label for="c">max:</label>
-                <input type="text" id="c">
+    <div class="pane">
+        <div class="header">
+            <h1>Distribution Generator</h1>
+            <div class="controls">
+                <label for="title">Title:</label>
+                <input type="text" id="title">
+                <label for="dist-type">Distribution Type:</label>
+                <select id="dist-type">
+                    <option value="Triangular">Triangular</option>
+                    <option value="Gaussian">Gaussian</option>
+                    <option value="Lognormal">Lognormal</option>
+                </select>
+                <div id="triangular-params" class="param-section">
+                    <label for="a">a:</label>
+                    <input type="text" id="a">
+                    <label for="b">b:</label>
+                    <input type="text" id="b">
+                    <label for="c">c:</label>
+                    <input type="text" id="c">
+                </div>
+                <div id="gaussian-params" class="param-section" style="display:none;">
+                    <label for="mu">μ:</label>
+                    <input type="text" id="mu">
+                    <label for="sigma">σ:</label>
+                    <input type="text" id="sigma">
+                </div>
+                <div id="lognormal-params" class="param-section" style="display:none;">
+                    <label for="log-mu">Log μ:</label>
+                    <input type="text" id="log-mu">
+                    <label for="log-sigma">Log σ:</label>
+                    <input type="text" id="log-sigma">
+                </div>
+                <label for="n">n:</label>
+                <input type="text" id="n">
+                <button id="generate">Generate</button>
+                <button id="combine">Combine Distributions</button>
+                <button id="export">Export CSV</button>
+                <button id="delete-all">Delete All</button>
             </div>
-            <div id="gaussian-params" style="display:none;">
-                <label for="mu">μ:</label>
-                <input type="text" id="mu">
-                <label for="sigma">σ:</label>
-                <input type="text" id="sigma">
+            <div class="combine-controls">
+                <label for="combine-operation">Combine Operation:</label>
+                <select id="combine-operation">
+                    <option value="Add">Add</option>
+                    <option value="Subtract">Subtract</option>
+                    <option value="Multiply">Multiply</option>
+                    <option value="Divide">Divide</option>
+                </select>
             </div>
-            <label for="n">n:</label>
-            <input type="text" id="n">
-            <button id="generate">Generate</button>
-            <button id="combine">Combine Distributions</button>
-            <button id="export">Export CSV</button>
-            <button id="delete-all">Delete All</button>
         </div>
-        <div id="plot-area"></div>
+        <div id="plot-area" class="content"></div>
     </div>
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <script src="script.js"></script>
